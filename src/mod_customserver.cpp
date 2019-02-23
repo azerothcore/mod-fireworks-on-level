@@ -80,35 +80,20 @@ public:
         // Shoot fireworks into the air when hits a specific level
         if (sConfigMgr->GetBoolDefault("CustomServer.FireworkLevels", true))
         {
-            if (oldLevel == 4)
+            switch (oldLevel) {
+              case 4: 
+              case 9:
+              case 14:
+              case 19:
+              case 29:
+              case 39:
+              case 49:
+              case 59:
+              case 69:
+              case 79:
                 player->CastSpell(player, 11541, true);
-
-            if (oldLevel == 9)
-                player->CastSpell(player, 11541, true);
-
-            if (oldLevel == 14)
-                player->CastSpell(player, 11541, true);
-
-            if (oldLevel == 19)
-                player->CastSpell(player, 11541, true);
-
-            if (oldLevel == 29)
-                player->CastSpell(player, 11541, true);
-
-            if (oldLevel == 39)
-                player->CastSpell(player, 11541, true);
-
-            if (oldLevel == 49)
-                player->CastSpell(player, 11541, true);
-
-            if (oldLevel == 59)
-                player->CastSpell(player, 11541, true);
-
-            if (oldLevel == 69)
-                player->CastSpell(player, 11541, true);
-
-            if (oldLevel == 79)
-                player->CastSpell(player, 11541, true);
+                break;
+            }
         }
     }
 };
