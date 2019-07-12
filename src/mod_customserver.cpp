@@ -59,6 +59,7 @@ ideas which is quicker and easier than writing a new module.
 #include "Configuration/Config.h"
 #include "ScriptMgr.h"
 #include "Player.h"
+#include "Chat.h"
 
 class CustomServerConfig : public WorldScript
 {
