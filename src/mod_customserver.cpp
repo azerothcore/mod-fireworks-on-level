@@ -61,25 +61,6 @@ ideas which is quicker and easier than writing a new module.
 #include "Player.h"
 #include "Chat.h"
 
-class CustomServerConfig : public WorldScript
-{
-public:
-    CustomServerConfig() : WorldScript("CustomServerConfig") { }
-
-    void OnBeforeConfigLoad(bool reload) override
-    {
-        if (!reload) {
-            std::string conf_path = _CONF_DIR;
-            std::string cfg_file = conf_path + "/mod_customserver.conf";
-
-            std::string cfg_def_file = cfg_file + ".dist";
-            sConfigMgr->LoadMore(cfg_def_file.c_str());
-            sConfigMgr->LoadMore(cfg_file.c_str());
-
-        }
-    }
-};
-
 class CustomServer : public PlayerScript
 {
 
@@ -121,6 +102,5 @@ public:
 
 void AddCustomServerScripts()
 {
-    new CustomServerConfig();
     new CustomServer();
 }
