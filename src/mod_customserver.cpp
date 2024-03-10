@@ -71,7 +71,7 @@ public:
     void OnLogin(Player* player)
     {
         // Announce Module
-        if (sConfigMgr->GetBoolDefault("CustomServer.Announce", true))
+        if (sConfigMgr->GetOption<bool>("CustomServer.Announce", true))
         {
             ChatHandler(player->GetSession()).SendSysMessage("This server is running the |cff4CFF00Custom Server |rmodule.");
         }
@@ -80,7 +80,7 @@ public:
     void OnLevelChanged(Player * player, uint8 oldLevel)
     {
         // Shoot fireworks into the air when hits a specific level
-        if (sConfigMgr->GetBoolDefault("CustomServer.FireworkLevels", true))
+        if (sConfigMgr->GetOption<bool>("CustomServer.FireworkLevels", true))
         {
             switch (oldLevel) {
               case 4: 
