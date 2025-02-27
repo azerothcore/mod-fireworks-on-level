@@ -56,28 +56,29 @@ ideas which is quicker and easier than writing a new module.
 
 */
 
-#include "Configuration/Config.h"
-#include "ScriptMgr.h"
-#include "Player.h"
 #include "Chat.h"
+#include "Configuration/Config.h"
+#include "Player.h"
+#include "ScriptMgr.h"
 
 class CustomServer : public PlayerScript
 {
 
 public:
 
-    CustomServer() : PlayerScript("CustomServer") { }
+    CustomServer() : PlayerScript("CustomServer", {
+        PLAYERHOOK_ON_LOGIN,
+        PLAYERHOOK_ON_LEVEL_CHANGED
+    }) { }
 
-    void OnLogin(Player* player)
+    void OnPlayerLogin(Player* player) override
     {
         // Announce Module
         if (sConfigMgr->GetOption<bool>("CustomServer.Announce", true))
-        {
             ChatHandler(player->GetSession()).SendSysMessage("This server is running the |cff4CFF00Custom Server |rmodule.");
-        }
     }
 
-    void OnLevelChanged(Player * player, uint8 oldLevel)
+    void OnPlayerLevelChanged(Player * player, uint8 oldLevel) override
     {
         // Shoot fireworks into the air when hits a specific level
         if (sConfigMgr->GetOption<bool>("CustomServer.FireworkLevels", true))
